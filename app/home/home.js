@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myApp.home', ['ngRoute'])
+angular.module('myApp.home', ['ngRoute','ngAnimate', 'ngSanitize', 'ui.bootstrap'])
 
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/home', {
@@ -10,6 +10,10 @@ angular.module('myApp.home', ['ngRoute'])
     }])
 
     .controller('HomeCtrl', ['$scope', '$http', function ($scope, $http) {
+        $scope.myInterval = 5000;
+        $scope.noWrapSlides = false;
+        $scope.active = 0;
+
          // Fetching data from JSON files
         $http.get('data/breakfast.json')
             .then(function (data) {
